@@ -1,8 +1,12 @@
+import { useMachine } from '@xstate/react'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { todosMachine } from '../machines/todoAppMachine'
 
 
 export default function Home() {
+  const [state, send] = useMachine(todosMachine)
   return (
     <>
       <Head>
@@ -12,8 +16,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-        <div >
-          Hello world
+        <div>
+          {JSON.stringify(state.value)}
+          <button onClick={() => {send("Todos loaded"); 
+          }
+          }> Todos loaded</button>
+          <button onClick={() => {send("Loading Todos failed");
+          }}
+          > Loading Todos Failed</button>
+
+
+
           
         </div>
       </main>

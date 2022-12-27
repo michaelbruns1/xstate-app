@@ -1,6 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+This is a stately app that uses [xstate](https://xstate.js.org/) to manage state. It is a simple app that allows you to add and remove items from a list. It also has a simple search feature that filters the list based on the search term.
+
+[State Machine Tutorial]('https://www.youtube.com/watch?v=xVhHej3LpWw&list=PLvWgkXBB3dd4ocSi17y1JmMmz7S5cV8vI&index=3')
 
 First, run the development server:
 
