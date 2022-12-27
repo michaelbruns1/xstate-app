@@ -1,17 +1,15 @@
-import { useMachine } from '@xstate/react'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { todosMachine } from '../machines/todoAppMachine'
+import { useMachine } from "@xstate/react";
+import type { NextPage } from "next";
+import { todosMachine } from "../machines/todoAppMachine";
 
-const todos = new Set<string>(["Take bins out", "Wash the car", "Do the dishes"])
+const todos = new Set<string>([]);
 
-export default function Home() {
+const Home: NextPage = () => {
   const [state, send] = useMachine(todosMachine, {
     services: {
       loadTodos: async () => {
         return Array.from(todos);
-        },
+      },
       saveTodo: async (context, event) => {
         todos.add(context.createNewTodoFormInput);
       },
@@ -20,6 +18,7 @@ export default function Home() {
       },
     },
   });
+
   return (
     <div>
       <pre>{JSON.stringify(state.value)}</pre>
@@ -98,3 +97,5 @@ export default function Home() {
     </div>
   );
 };
+
+export default Home;
